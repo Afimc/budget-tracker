@@ -1,0 +1,16 @@
+<div class="transaction-list-component">
+    <div class="title">
+        <h1>Yours transactions</h1>
+    </div>
+    <div class="content">        
+        <ul>
+            <li *ngFor='let transaction of transactions'>
+                {{transaction.name}} {{transaction.value + '$'}} {{transaction.date}}
+            </li>
+        </ul> 
+    </div>
+    <a routerLink="/">
+        <button>Dashboard</button>
+      </a>
+</div>
+
