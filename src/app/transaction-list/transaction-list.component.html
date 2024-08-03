@@ -1,16 +1,16 @@
 <div class="transaction-list-component">
-    <div class="title">
-        <h1>Yours transactions</h1>
+  <div class="title">
+    <h1>Yours transactions</h1>
+  </div>
+  <div class="content">
+    <div class="transaction" *ngFor="let transaction of transactions">
+      <div class="activity">{{'Name: ' + transaction.name}}</div>
+      <div class="value">{{'value: ' + transaction.value}}</div>
+      <div class="date">{{'date: ' + transaction.date}}</div>
     </div>
-    <div class="content">        
-        <ul>
-            <li *ngFor='let transaction of transactions'>
-                {{transaction.name}} {{transaction.value + '$'}} {{transaction.date}}
-            </li>
-        </ul> 
-    </div>
-    <a routerLink="/">
-        <button>Dashboard</button>
-      </a>
+  </div>
+  <div class="buttons">
+    <button  routerLink="/">Dashboard</button>
+    <button routerLink="/transactions/add">+</button>
+  </div>
 </div>
-

@@ -1,10 +1,14 @@
 
-<h1>Dashboard</h1>
-<div class="dashboard-content">
-  <p>Welcome to the Dashboard!</p>
-  <!-- Add more content here -->
-  <a routerLink="/transactions">
+
+<div class="dashboard-page">
+  <h1>Welcome to the Dashboard!</h1>
+  <div class="dashboard-content">
+    <div class="in"><span>{{'In: ' + amounts.sumPositive}}</span></div>
+    <div class="out"><span>{{'Out: ' + amounts.sumNegative}}</span></div>
+    <div class="balance"><span>{{'Balance: ' + amounts.totalSum}}</span></div>
+  </div>
+  <div class="button" routerLink="/transactions">
     <button>View Transactions</button>
-  </a>
+  </div>
   
 </div>

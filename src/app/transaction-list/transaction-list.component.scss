@@ -1,14 +1,36 @@
+@import "../../styles.scss";
 .transaction-list-component{
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $primary-color;
 
     .title{
         display: flex ;
         justify-content: center;
+        color: $text-color;
     }
 
     .content{
-        
+        border: solid 1px black;
+        height: 30rem;
+        overflow: auto;
+        .transaction{
+            border: solid 1px $secondary-color;
+            display: flex;
+            color: $text-color;
+
+            .activity, .value, .date{
+             width: 20rem;
+            }
+        }
+    }
+    .buttons{
+        width: 35rem;
+        display: flex;
+        justify-content:space-between
     }
 
 }
