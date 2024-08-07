@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { BudgetService } from '../budget.service';
 import { CommonModule } from '@angular/common';
 
@@ -11,14 +11,20 @@ import { CommonModule } from '@angular/common';
   styleUrl: './transaction-list.component.scss'
 })
 export class TransactionListComponent {
+  
   constructor(
     private budgetService: BudgetService,
+    private router: Router
   ){}
+
   get transactions(){
     return this.budgetService.transactions
     
   }
 
+  transactionForEdit(id:number){
+    this.router.navigate([`transactions/edit/${id}`])
+  }
 
 
 }

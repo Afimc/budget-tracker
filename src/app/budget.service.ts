@@ -11,25 +11,29 @@ interface Itransaction {
 
 export class BudgetService {
 
-  private _transactions:Itransaction[] = [
-    {id:1, value:+1000, name:'salary', date:'12.01.21'},
-    {id:2, value:-150, name:'shoping', date:'12.01.21'},
-    {id:3, value:-200, name:'petrol', date:'13.01.21'},  
-    {id:4, value:-350, name:'rent', date:'12.01.21'},
+  // private _transactions:Itransaction[] = []
+  // [
+  //   {id:1, value:+1000, name:'salary', date:'2024-08-11T05:49'},
+  //   {id:2, value:-150, name:'shoping', date:'2024-08-11T05:49'},
+  //   {id:3, value:-200, name:'petrol', date:'2024-08-11T05:49'},  
+  //   {id:4, value:-350, name:'rent', date:'2024-08-11T05:49'},
     
-  ]
+  // ]
   constructor() { }
 
   get transactions() {
-    return this._transactions
+    const transactions = localStorage.getItem('transactions');
+    return (transactions ? JSON.parse(transactions) : [] ) as Itransaction[];
+    // return this._transactions
+  
   }
 
   get amounts() {
-    const positiveValues = this._transactions
+    const positiveValues = this.transactions
     .filter(transaction => transaction.value > 0)
     .map(transaction => transaction.value);
   
-  const negativeValues = this._transactions
+  const negativeValues = this.transactions
     .filter(transaction => transaction.value < 0)
     .map(transaction => transaction.value);
 
@@ -40,8 +44,23 @@ export class BudgetService {
     return {positiveValues,negativeValues,sumPositive,sumNegative,totalSum}
   }
 
-  set Addtransactions(value:any){
-    this._transactions.push(value)
-    console.log({tr:this._transactions})
+  set Addtransactions(value:Itransaction){
+    const transactions = [...this.transactions]
+    transactions.push(value)
+    this.setLocalStorage(transactions)
   }
+
+  editTransaction(value:Itransaction){
+    const index = this.transactions.findIndex(transaction => transaction.id === value.id);
+    if (index !== -1) {
+      const transactions = [...this.transactions]
+      transactions[index] = value;
+      this.setLocalStorage(transactions)
+    }
+  }
+
+  setLocalStorage(newTransactions:Itransaction[]){
+    localStorage.setItem('transactions', JSON.stringify(newTransactions));
+  }
+
 }

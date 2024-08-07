@@ -3,10 +3,11 @@
     <h1>Yours transactions</h1>
   </div>
   <div class="content">
-    <div class="transaction" *ngFor="let transaction of transactions">
-      <div class="activity">{{'Name: ' + transaction.name}}</div>
-      <div class="value">{{'value: ' + transaction.value}}</div>
-      <div class="date">{{'date: ' + transaction.date}}</div>
+    <div class="titles"><span id="name">Name</span> <span id="value">Value</span> <span id="date">Date</span></div>
+    <div class="transaction" *ngFor="let transaction of transactions" (click)="transactionForEdit(transaction.id)">
+      <div class="activity">{{transaction.name}}</div>
+      <div class="value">{{transaction.value}}</div>
+      <div class="date">{{transaction.date}}</div>
     </div>
   </div>
   <div class="buttons">
