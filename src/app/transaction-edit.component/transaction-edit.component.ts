@@ -46,4 +46,11 @@ export class TransactionEditComponent implements OnInit {
       this.router.navigate(['/transactions']);
     }
   }
+
+  deleteTransaction() {
+    if (this.transactionId !== null) {
+      this.budgetService.deleteTransaction(this.transactionId);
+      this.router.navigate(['/transactions']);
+    }
+  }
 }

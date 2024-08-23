@@ -59,6 +59,11 @@ export class BudgetService {
     }
   }
 
+  deleteTransaction(id: number) {
+    const transactions = this.transactions.filter(transaction => transaction.id !== id);
+    this.setLocalStorage(transactions);
+  }
+
   setLocalStorage(newTransactions:Itransaction[]){
     localStorage.setItem('transactions', JSON.stringify(newTransactions));
   }
